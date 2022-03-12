@@ -1,0 +1,29 @@
+<html>
+<head>
+	<title>3-5 연습문제</title>
+</head>
+<body>
+	<div id="app">
+		<h1>Hello 
+			<span v-if="gender === 'female'">Miss</span>
+			<span v-else-if="gender === 'male'">Mister</span>
+			<span v-else>So you can't decide. Fine! </span>
+			{{name}}.
+		</h1>
+		Enter your gender:<br>
+		<input v-model="gender"><br>
+		Enter your name:<br>
+		<input v-model="name"><br>
+	</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script>
+	new Vue({
+		el:'#app',
+		data: { 
+			name : 'none',
+			gender : 'female'
+		}
+	})
+</script>
+</html>
