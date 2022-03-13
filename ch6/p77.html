@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>User Stories</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Let's hear some stories!</h1>
+            <div>
+                <h3>Alex's stories</h3>
+                <ul class="list-group">
+                    <li v-for="story in storiesBy('Alex')" class="list-group-item">
+                        {{ story.writer}} said "{{ story.plot }}"
+                    </li>
+                </ul>
+                <h3>John's stories</h3>
+                <ul class="list-group">
+                    <li v-for="story in storiesBy('John')" class="list-group-item">
+                        {{ story.writer}} said "{{ story.plot }}"
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            data : {
+                stories: [
+                    {
+                        plot: "About Alex 1",
+                        writer: "Alex"
+                    },
+                    {
+                        plot: "About John 1",
+                        writer: "John"
+                    },
+                    {
+                        plot: "About Alex 2",
+                        writer: "Alex"
+                    },
+                    {
+                        plot: "About John 2",
+                        writer: "John"
+                    }
+                ]
+            },
+            methods: {
+                storiesBy: function(writer) {
+                    return this.stories.filter(function (story) {
+                        return story.writer === writer
+                    })
+                }
+            }
+        })
+    </script>
+</html>

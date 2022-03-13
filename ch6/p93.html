@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>p93</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>People of Gaul</h1>
+            <ul class="list-group">
+                <li v-for="(person, index) in orderedPeople()" :key="index" class="list-group-item">
+                    {{person.name}} {{person.age}}
+                </li>
+            </ul>
+            <h1>"Old" People of Gaul</h1>
+            <ul class="list-group">
+                <li v-for="(person, index) in old" :key="index" class="list-group-item">
+                    {{person.name}} {{person.age}}
+                </li>
+            </ul>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.4/lodash.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.filter('snitch', function (hero) {
+            return hero.secretId + ' is '
+            + hero.firstname + ' '
+            + hero.lastname + ' in real life!'
+        })
+        new Vue({
+            el: '.container',
+            data: {
+                people: [
+                    { name: "AAA", age: 33 },
+                    { name: "BBB", age: 45 },
+                    { name: "CCC", age: 66 },
+                    { name: "DDD", age: 65 },
+                    { name: "EEE", age: 78 }
+                ]
+            },
+            methods: {
+                orderedPeople: function() {
+                    return _.orderBy(this.people, 'age')
+                }
+            },
+            computed: {
+                old: function() {
+                    return this.people.filter(function (item) {
+                        return item.age > 65;
+                    })
+                }
+            }
+        })
+    </script>
+</html>

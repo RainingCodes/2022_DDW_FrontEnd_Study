@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>User Stories</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Let's hear some famous stories! ( {{famous.length}} )</h1>
+                <ul class="list-group">
+                    <li v-for="story in famous" class="list-group-item">
+                        {{ story.writer }} said "{{story.plot}}"
+                        and upvotes {{ story.upvotes }} times.
+                    </li>
+                </ul>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            data : {
+                stories: [
+                    {
+                        plot: "About Alex 1",
+                        writer: "Alex",
+                        upvotes: 57
+                    },
+                    {
+                        plot: "About John 1",
+                        writer: "John",
+                        upvotes: 38
+                    },
+                    {
+                        plot: "About Alex 2",
+                        writer: "Alex",
+                        upvotes: 53
+                    },
+                    {
+                        plot: "About John 2",
+                        writer: "John",
+                        upvotes: 67
+                    }
+                ]
+            },
+            computed: {
+                famous: function() {
+                    return this.stories.filter(function(item) {
+                        return item.upvotes > 50;
+                    });
+                }
+            },
+            methods: {
+                storiesBy: function(writer) {
+                    return this.stories.filter(function (story) {
+                        return story.writer === writer
+                    })
+                }
+            }
+        })
+    </script>
+</html>

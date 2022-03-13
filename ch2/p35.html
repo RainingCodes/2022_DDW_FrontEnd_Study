@@ -1,0 +1,19 @@
+<html>
+<head>
+	<title>Hello p35</title>
+</head>
+<body>
+	<div id="app">
+		<h1>Hello {{name}}</h1>
+		Enter your name:<br>
+		<input v-model="name">
+	</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script>
+	new Vue({
+		el:'#app',
+		data: { name : 'name'}
+	})
+</script>
+</html>

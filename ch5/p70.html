@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>Calculator p70</title>
+    </head>
+    <body>
+        <div class="container">
+            a={{ a }}, b={{ b }}
+            <input v-model.number="a">
+            <pre>
+                {{ $data }}
+            </pre>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            data : {
+                a: 1,
+            }, 
+            computed: {
+                // 계산된 접근자
+                b : function() {
+                    return parseFloat(this.a) + 1
+                }
+            }
+        })
+    </script>
+</html>

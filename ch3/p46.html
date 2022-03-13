@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Hello p46</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>Hello 
+                <span v-if="gender == 'female'">Miss {{name}}.</span>
+                <span v-else-if="gender == 'male'">Mister {{name}}.</span>
+                <span v-else>So you can't decide. Fine! </span>
+            </h1>
+            <h3>Enter your gender:<br></h3>
+            <input v-model="gender"><br>
+            <h3>Enter your name:<br></h3>
+            <input v-model="name"><br>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+    <script>
+        new Vue({
+		el:'#app',
+		data: { 
+			name : 'none',
+			gender : 'none'
+		}
+	})
+    </script>
+</html>

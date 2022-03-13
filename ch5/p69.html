@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>Calculator p69</title>
+    </head>
+    <body>
+        <div class="container">
+            a={{ a }}, b={{ b }}
+            <pre>
+                {{ $data }}
+            </pre>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            data : {
+                a: 1,
+            }, 
+            computed: {
+                // 계산된 프로퍼터
+                b : function() {
+                    return this.a + 1
+                }
+            }
+        })
+    </script>
+</html>

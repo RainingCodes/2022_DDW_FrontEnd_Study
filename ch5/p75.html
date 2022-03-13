@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>Calculator p75</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>People of Vue</h1>
+            <ul class="list-group">
+                <li v-for="c in candidates" class="list-group-item">
+                    Mr. "{{ c.name }}" {{ c.votes }}  
+                    <button @click=" c.votes++">
+                        Vote
+                    </button>
+                </li>
+            </ul>
+            <input @keyup.delete="clear" class="form-control" placeholder="press 'delete' to reset">
+            <h2>Our mayor is {{mayor.name}}!</h2>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            data : {
+                candidates: [
+                    {
+                        name: "Black",
+                        votes: 0
+                    },
+                    {
+                        name: "Pink",
+                        votes: 0
+                    },
+                    {
+                        name: "White",
+                        votes: 0
+                    },
+                    {
+                        name: "Brown",
+                        votes: 0
+                    }
+                ]
+            },
+            computed: {
+                mayor: function () {
+                    //first we sort the array descending
+                    var candidatesSorted = this.candidates.sort(function (a, b) {
+                        return b.votes - a.votes;
+                    });
+                    //the mayor will be the first item
+                    return candidatesSorted[0];
+                }
+            },
+            methods: {
+                //this method runs when the key 'delete' is pressed
+                clear: function () {
+                    //Turn votes of all candidate to 0 using map() function.
+                    this.candidates = this.candidates.map(function (candidate) {
+                        candidate.votes = 0;
+                        return candidate;
+                    })
+                }
+            }
+        })
+    </script>
+</html>
