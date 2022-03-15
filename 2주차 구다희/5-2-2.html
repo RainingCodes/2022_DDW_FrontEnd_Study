@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>Calculator</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Type 2 numbers and choose operation.</h1>
+            <form class="form-inline">
+                <input v-model.number="a" class="form-control">
+                <select v-model="operator" class="form-control">
+                    <option>+</option>
+                    <option>-</option>
+                    <option>*</option>
+                    <option>/</option>
+                </select>
+                <input v-model.number="b" class="form-control">
+
+                <!--.prevent 하면 페이지 새로고침 x event.preventDefault()랑 같음-->
+                <button type="submit" @click.prevent="Calculate" class="btn btn-primary">Calculate</button>
+            </form>
+            <h2>Resut: {{a}} {{operator}} {{b}} = {{c}}</h2>
+            <pre>
+                {{ $data }}
+            </pre>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            data : {
+                a:1,
+                b:2,
+                c:null,
+                operator:"+",
+            },
+            methods: {
+                Calculate: function() {
+                    switch (this.operator) {
+                        case "+":
+                            this.c = this.a + this.b
+                            break;
+                        case "-":
+                            this.c = this.a - this.b
+                            break;
+                        case "*":
+                            this.c = this.a * this.b
+                            break;
+                        case "/":
+                            this.c = this.a / this.b
+                            break;
+                    }
+                }
+            },
+        });
+    </script>
+</html>
