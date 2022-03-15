@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>The Elections</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>People of Vue</h1>
+            <ul class="list-group">
+                <li v-for="person in people" class="list-group-item">
+                    {{person.name}} {{person.votes}} <button @click="person.votes++">Vote</button>
+                </li>
+            </ul>
+            <input type="text" @keyup.delete="clear" value="press 'delete' to reset">
+            <h1>Our mayor is {{mayor.name}}</h1>
+        </div>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            data : {
+                people: [
+                {
+                    name : "Mr.Black",
+                    votes : 0,
+                },
+                {
+                    name : "Miss. Pink",
+                    votes : 0
+                },
+                {
+                    name : "Ms. White",
+                    votes : 0
+                },
+                {
+                    name : "Mr. Brwon",
+                    votes : 0
+                },
+                ],
+            },
+            computed : {
+                mayor : function() {
+                    var sortedPeople = this.people.sort(function(a, b) {
+                        return b.votes - a.votes;
+                    });
+                    return sortedPeople[0];
+                }
+            },
+            methods: {
+                clear : function() {
+                    this.people = this.people.map(function(person) {
+                        person.votes = 0;
+                        return person
+                    })
+                },
+            }
+        });
+    </script>
+</html>

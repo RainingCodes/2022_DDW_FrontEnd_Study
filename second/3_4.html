@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>Let's hear some stories!</title>
+    </head>
+    <body>
+        <div class="container">
+            <h3>Alex's stories</h3>
+            <ul class="list-group">
+                <story v-for="story in storiesBy('Alex')" :story="story" class="list-group-item"></story>
+            </ul>
+            <h3>John's stories</h3>
+            <ul class="list-group">
+                <story v-for="story in storiesBy('John')" :story="story" class="list-group-item"></story>
+            </ul>
+            <div class="form-group">
+                <label for="query">
+                    What are you looking for?
+                </label>
+                <input v-model="query" class="form-control">
+            </div>
+            <h3>Search results:</h3>
+            <ul class="list-group">
+                <story v-for="story in search" :story="story" class="list-group-item"></story>
+            </ul>
+        </div>
+    </body>
+    <template id="story-template">
+        <li>{{story.writer}} said "{{story.body}}"</li>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('story', {
+            props: ['story'],
+            template: '#story-template'
+        });
+        new Vue({
+            el: '.container',
+            data : {
+                stories: [
+                {
+                    body : "I crashed my car today!",
+                    writer : "Alex",
+                    upvotes : 28,
+                },
+                {
+                    body : "Yesterday, someone stole my bag! Miss. Pink",
+                    writer : "John",
+                    upvotes : 8, 
+                },
+                {
+                    body : "Ms. White",
+                    writer : "John",
+                    upvotes : 51,
+                },
+                {
+                    body : "Mr. Brwon",
+                    writer : "Alex",
+                    upvotes : 74
+                },
+                ],
+                query : ''
+            },
+            computed : {
+                search: function() {
+                    var query = this.query
+                    return this.stories.filter(function(story) {
+                        return story.body.includes(query)
+                    })
+                },
+            },
+            methods: {
+                storiesBy: function(writer) {
+                    return this.stories.filter(function (story) {
+                        return story.writer === writer
+                    })
+                },
+            }
+        });
+    </script>
+</html>
