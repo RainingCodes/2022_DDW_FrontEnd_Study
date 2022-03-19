@@ -1,0 +1,102 @@
+<html>
+<head>
+  <title>8-5. 이벤트 리스너 제거</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container text-center">
+    <h1>Food Battle</h1>
+    <p style="font-size: 140px;">
+      {{ votes.count }}
+    </p>
+    <button class="btn btn-danger" @click="reset">Reset votes</button>
+    <button class="btn btn-danger" @click="stop">stop</button>
+    
+    <hr>
+
+    <div class="row">
+      <food name="Cheeseburger"></food>
+      <food name="Double Bacon Burger"></food>
+      <food name="Rodeo Burger"></food>
+    </div>
+    <hr>
+
+    <h1>Log:</h1>
+    <ul class="list-group">
+      <li class="list-group-item" v-for="vote in votes.log">{{ vote }}</li>
+    </ul>
+  </div>
+
+  <template id="food">
+    <div class="text-center col-lg-4">
+      <p style="font-size : 40px">
+        {{votes}}
+      </p>
+    <button class="btn btn-default" @click="vote">{{ name }}</button>
+  </template>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script type="text/javascript">
+  //중앙 이벤트 버스
+  var bus = new Vue()
+
+  Vue.component('food', {
+    template: '#food',
+    props: ['name'],
+    data : function() {
+      return {
+        votes : 0
+      }
+    },
+
+    methods : {
+      vote : function(event) {
+        //this. name 대신 이벤트의 엘리먼트 텍스트에 접근
+        var food =  event.srcElement.textContent;
+        this.votes++
+        bus.$emit('voted', food)
+      },
+      reset : function() {
+        this.votes = 0;
+      }
+    },
+
+    created () {
+      bus.$on('reset', this.reset)
+    }
+  })
+
+
+  new Vue({
+    el: '.container',
+    data: {
+        votes: {
+        count: 0,
+        log: []
+      }
+    },
+    methods:
+    {
+      countVote: function (food) {
+        this.votes.count++
+        this.votes.log.push(food + ' received a vote.')
+      },
+      reset : function() {
+        this.votes = {
+          count:0,
+          log:[]
+        }
+        bus.$emit('reset')
+      },
+
+      //득표 수 합계에 더해지지 않고 로그에 표시도 안된다 
+      stop: function() {
+        bus.$off(['voted'])
+      }
+    },
+    created() {
+      bus.$on('voted', this.countVote)
+    }
+  })
+</script>
+</html>
