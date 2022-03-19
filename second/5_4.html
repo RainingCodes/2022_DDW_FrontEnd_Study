@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>Paint Me</title>
+    </head>
+    <body>
+        <div class="container text-center" :style="bgColor">
+            <input type="color" v-model="bgColor.backgroundColor">
+            <input type="text" v-model="bgColor.backgroundColor">
+        </div>   
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            data : {
+                bgColor: {
+                    backgroundColor : ""
+                }
+            },
+            
+        });
+    </script>
+    <style type="text/css">
+        .container {
+            width : 500px;
+            height : 500px;
+        }
+    </style>
+</html>

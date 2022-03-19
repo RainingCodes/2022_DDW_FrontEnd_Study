@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>Hello Vue</title>
+    </head>
+    <body>
+        <div id="app">
+            <div class="container text-center">
+                <div :style="niceStyle">ABC</div>
+                <div :style="{color: niceStyle.color, fontSize:niceStyle.fontSize}"> Hello </div>
+                <div :style="{color:'red', fontSize:'100px'}">ABC</div>
+                <div :style="[niceStyle, badStyle]">가나다라</div>
+            </div>
+        </div>   
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            data : {
+                niceStyle: {
+                    color : 'blue',
+                    fontSize:'50px'
+                },
+                badStyle: {
+                    fontStyle: 'italic'
+                }
+            },
+            methods:
+            {
+              
+            },
+            
+        });
+    </script>
+    
+</html>
