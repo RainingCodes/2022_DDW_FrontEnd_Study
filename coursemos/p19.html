@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SEARCH</title>
+    </head>
+    <body>
+        <div class="search">
+            <form id="search" method="GET" action="/coursemos/p19.html">
+                <input id="search1" type="text" placeholder="장소를 입력하세요.">
+                <input id="submit" type="submit" value="검색">
+                <input id="plus" type="button" value="+" onclick="add_Place()"/>
+                <!-- <div id="search2"></div> -->
+            </form>
+        </div>   
+        <script>
+            const add_Place = () => {
+                const box = document.getElementById("search2");
+                const search = document.createElement('search');
+                search.innerHTML = "<input type='text' placeholder='장소를 입력하세요.' ><input type='button' value='-' onclick='remove(this)'>";
+                box.appendChild(newP);
+                document.getElementById('plus').remove();
+            }
+            const remove = (obj) => {
+                document.getElementById('search2').removeChild(obj.parentNode);
+                const search = document.getElementById("search");
+                var newPlus = document.createElement('input');
+                newPlus.setAttribute("id", "plus");
+                newPlus.setAttribute("type", "button");
+                newPlus.setAttribute("value", "+");
+                newPlus.setAttribute("onclick", "add_Place()");
+                search.appendChild(newPlus);
+            }
+        </script>
+    </body>
+</html>
