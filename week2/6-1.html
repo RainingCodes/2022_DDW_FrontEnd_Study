@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>6-1. 필터링된 결과</title>
+    </head>
+    <body>
+        <div class="container">
+		<h1>Let's hear some stories!</h1>
+			<div>
+				<h3>Alex's stories</h3>
+				<ul class="list-group">
+					<li v-for="story in storiesBy('Alex')" class ="list-group-item">
+						{{story.writer}} said "{{story.plot}}"
+					</li>
+				</ul>
+
+				<h3>John's stories</h3>
+				<ul class="list-group">
+					<li v-for="story in storiesBy('John')" class ="list-group-item">
+						{{story.writer}} said "{{story.plot}}"
+					</li>
+				</ul>
+			</div>
+		</div>
+		<pre>
+			{{ $data }}
+		</pre>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+	<script>
+		new Vue({
+			el:'.container',
+			data:{
+				stories: [			
+					{
+						plot: "오늘 차사고 냈다",
+						writer: "Alex"
+					},
+					{
+						plot:"어제는 가방 누가 훔쳐갔다",
+						writer: "John"
+					},
+					{		
+						plot:"누가 내 초콜릿 먹었다",
+						writer:"Alex"
+					},
+					{		
+						plot:"내가 초콜릿 먹었다",
+						writer:"John"
+					},
+				]
+			},
+			methods:
+			{
+				storiesBy: function (writer) {
+					return this.stories.filter(
+						function (story) {
+							return story.writer == writer
+						}
+					)
+				}
+			},
+		})
+	</script>
+</html>

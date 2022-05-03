@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>6-5. 연습 문제</title>
+    </head>
+    <body>
+        <div class="container">
+			<h1>People of Gaul</h1>
+			<ul class="list-group">
+				<li v-for="people in orderedPeople" class ="list-group-item">
+					{{people.name}} {{people.age}}
+				</li>
+			</ul>
+
+			<h1>"Old" People of Gaul</h1>
+			<ul class="list-group">
+				<li v-for="people in oldPeople" class ="list-group-item">
+					{{people.name}} {{people.age}}
+				</li>
+			</ul>
+
+			<pre>
+				{{ $data }}
+			</pre>
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.min.js"></script>
+	<script>
+		new Vue({
+			el:'.container',
+			data:{
+				peoples: [			
+					{ name : "Obellx", age : 31 },
+					{ name : "Asterix", age : 32 },
+					{ name : "Julius Caesar", age : 56 },
+					{ name : "Majestix", age : 62 },
+				],
+			},
+			computed: {
+				oldPeople: function() {
+					return this.peoples.filter(
+						function (people) {
+							return people.age > 55
+					})
+				},
+
+				orderedPeople: function() {
+					return this.peoples.sort(function(a,b){
+						return (a.age - b.age) * -1;
+					})
+				}
+			},			
+		})
+	</script>
+</html>

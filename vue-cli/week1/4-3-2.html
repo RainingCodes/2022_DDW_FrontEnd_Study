@@ -1,0 +1,41 @@
+<html>
+<head>
+<link herf="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+	<title>4-3-2 예제 : 객체 배열 순회</title>
+</head>
+<body>
+	<div class="container">
+		<h1>이야기 좀 들어봐</h1>
+		<ul class="list-group">
+			<li v-for="(story, index) in stories" class ="list-group-item">
+				{{index}}, {{story.writer}} said "{{story.plot}}"
+			</li>
+		</ul>
+	</div>
+	<pre>
+		{{ $data }}
+	</pre>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+<script>
+	new Vue({
+		el:'.container',
+		data:{
+			stories: [			
+				{
+					plot: "오늘 차사고 냈다",
+					writer: "Alex"
+				},
+				{
+					plot:"어제는 가방 누가 훔쳐갔다",
+					writer: "John"
+				},
+				{		
+					plot:"누가 내 초콜릿 먹었다",
+					writer:"Alex"
+				},
+			]
+		}
+	})
+</script>
+</html>

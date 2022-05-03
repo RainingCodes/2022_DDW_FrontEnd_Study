@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>The Elections</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>People of Vue</h1>
+            <ul class="list-group">
+                <li v-for="(people, index) in peoples" :key="index" class ="list-group-item">
+                    {{people.name}} {{people.count}} <button @click="people.count++">Vote</button>
+                </li>
+            </ul>
+            <input @keyup.delete="clear" class="form-control" placeholder="press 'delete' to reset">
+            <h1>Our mayor is {{elected.name}}</h1>
+        </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '.container',
+            input: '',
+            data:{
+                peoples: [           
+                    {
+                        name: "Mr. Black",
+                        count: 0
+                    },
+                    {
+                        name:"Mr. Pink",
+                        count: 0
+                    },
+                    {       
+                        name:"Mr. White",
+                        count:0
+                    },
+                    {       
+                        name:"Mr. Brown",
+                        count:0
+                    },
+                ]
+            },
+            methods: {
+                clear: function() {
+                    this.peoples = this.peoples.map(
+                        function (people) {
+                            people.count = 0;
+                            return people;
+                        }
+                    );
+                },
+            },
+            computed: {
+                elected: function() {
+                    var sortedPeople = this.peoples.sort(
+                        function (a, b) {
+                            return b.count - a.count;
+                        }
+                    );
+                    return sortedPeople[0];
+                }
+            }
+        })
+    </script>
+</html>

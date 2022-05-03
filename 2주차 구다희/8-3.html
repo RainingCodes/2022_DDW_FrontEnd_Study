@@ -1,0 +1,69 @@
+<html>
+<head>
+  <title>8-3. 인자 전달</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class="container text-center">
+    <p style="font-size: 140px;">
+      {{ votes }}
+    </p>
+    <div class="row">
+      <food @voted="countVote" name="Cheeseburger"></food>
+      <food @voted="countVote" name="Double Bacon Burger"></food>
+      <food @voted="countVote" name="Rodeo Burger"></food>
+    </div>
+
+    <h1>Log:</h1>
+    <ul class="list-group">
+      <li class="list-group-item" v-for="(vote, index) in log" :key="index">{{ vote }}</li>
+    </ul>
+  </div>
+
+  <template id="food">
+    <div class="text-center col-lg-4">
+      <p style="font-size : 40px">
+        {{votes}}
+      </p>
+    <button class="btn btn-default" @click="vote">{{ name }}</button>
+  </template>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+<script type="text/javascript">
+
+  Vue.component('food', {
+    template: '#food',
+    props: ['name'],
+    data : function() {
+      return {
+        votes : 0
+      }
+    },
+
+    methods : {
+      vote : function() {
+        //console.log(event)
+        this.votes++ // 내꺼도 오르고
+        this.$emit('voted', event.srcElement.textContent) // 부모꺼도 오름
+      }
+    }
+  })
+
+
+  //부모 컴포넌트
+  new Vue({
+    el: '.container',
+    data: {
+      votes: 0,
+      log: []
+    },
+    methods:
+    {
+      countVote: function (food) {
+        this.votes++
+        this.log.push(food + ' received a vote.')
+      },
+    },
+  })
+</script>
+</html>

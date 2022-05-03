@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>7-2.컴포넌트 사용하기</title>
+    </head>
+    <body>
+        <div class="container">
+			<story></story>
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+	<script>
+		Vue.component('story', {
+			template: '<h1>My horse is amazing!</h1>'
+		});
+		new Vue({
+			el:'.container'	
+		})
+	</script>
+</html>

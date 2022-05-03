@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <title>7-3. 템플릿 다른방법</title>
+    </head>
+    <body>
+        <div class="container">
+			<story></story>
+		</div>
+	</body>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+	<template id="story-template">
+		<h1>My horse is amazing!</h1>
+	</template>
+	<script type="text/javascript">
+		Vue.component('story', {
+			template: "#story-template"
+		});
+	</script>
+	<script>
+		new Vue({
+			el:'.container'	
+		})
+	</script>
+</html>
