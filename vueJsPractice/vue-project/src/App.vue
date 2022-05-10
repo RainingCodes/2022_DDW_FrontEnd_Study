@@ -12,6 +12,13 @@
     <router-link to="/databindingradio">DB Radio</router-link> |
     <router-link to="/databindingattribute">DB Image</router-link> |
     <router-link to="/databindingbutton">DB Button</router-link> |
+    <router-link to="/provide">ProvideInject</router-link> |
+    <router-link to="/parent">Parent</router-link> |
+    <router-link to="/parent2">Parent2</router-link> |
+    <router-link to="/parent3">Parent3</router-link> |
+    <router-link to="/parent4">Parent4</router-link> |
+    <router-link to="/parent5">Parent5</router-link> |
+    <router-link to="/slot">Slot</router-link> |
   </nav>
   <router-view/>
 </template>

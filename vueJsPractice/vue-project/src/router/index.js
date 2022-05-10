@@ -10,6 +10,7 @@ import DataBindingCheckbox from '../views/DataBindingCheckbox.vue'
 import DataBindingRadio from '../views/DataBindingRadio.vue'
 import DataBindingAttribute from '../views/DataBindingAttribute.vue'
 import DataBindingButton from '../views/DataBindingButton.vue'
+import NestedComponent from '../views/NestedComponent.vue'
 
 const routes = [
   {
@@ -74,6 +75,46 @@ const routes = [
     path: '/databindingbutton',
     name: 'DataBindingButton',
     component: DataBindingButton
+  },
+  {
+    path: '/nested',
+    name: 'NestedComponent',
+    component: NestedComponent
+  },
+  {
+    path: '/provide',
+    name: 'ProvideInject',
+    component: () => import( /* webpackPrefetch: true, webpackChunkName: "provide" */ '../views/ProvideInject.vue')
+  },
+  {
+    path: '/parent',
+    name: 'ParentComponent',
+    component: () => import( /* webpackChunkName: "parent" */ '../views/ParentComponent.vue')
+  },
+  {
+    path: '/parent2',
+    name: 'ParentComponent2',
+    component: () => import( /* webpackChunkName: "parent2" */ '../views/ParentComponent2.vue')
+  },
+  {
+    path: '/parent3',
+    name: 'ParentComponent3',
+    component: () => import( /* webpackChunkName: "parent3" */ '../views/ParentComponent3.vue')
+  },
+  {
+    path: '/parent4',
+    name: 'ParentComponent4',
+    component: () => import( /* webpackChunkName: "parent4" */ '../views/ParentComponent4.vue')
+  },
+  {
+    path: '/parent5',
+    name: 'ParentComponent5',
+    component: () => import( /* webpackChunkName: "parent5" */ '../views/ParentComponent5.vue')
+  },
+  {
+    path: '/slot',
+    name: 'SlotUseModalLayout',
+    component: () => import( /* webpackChunkName: "slot" */ '../views/SlotUseModalLayout.vue')
   }
 ]
 
