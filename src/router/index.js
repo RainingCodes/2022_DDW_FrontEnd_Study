@@ -27,6 +27,11 @@ import parentComponent2 from '../views/ParentComponent2.vue'
 import parentComponent3 from '../views/ParentComponent3.vue'
 import parentComponent4 from '../views/ParentComponent4.vue'
 import parentComponent5 from '../views/ParentComponent5.vue'
+import slot from '../views/SlotUseModalLayout.vue'
+import inject from '../views/ProvideInject.vue'
+import mixins from '../views/viewMixins.vue'
+import customDirective from '../views/CustomDirective.vue'
+import viewPlugin from '../views/viewPlugins.vue'
 
 const routes = [
   {
@@ -173,6 +178,34 @@ const routes = [
     path: '/parentComponent5',
     name: 'parentComponent5',
     component: parentComponent5
+  }
+  ,
+  {
+    path: '/slot',
+    name: 'slot',
+    component: slot
+  }
+  ,
+  {
+    path: '/inject',
+    name: 'inject',
+    component: inject
+  },
+  {
+    path: '/mixins',
+    name: 'mixins',
+    component: mixins
+  }
+  ,
+  {
+    path: '/customDirective',
+    name: 'customDirective',
+    component: customDirective
+  },
+  {
+    path: '/plugin',
+    name: 'plugin',
+    component: viewPlugin
   }
 ]
 

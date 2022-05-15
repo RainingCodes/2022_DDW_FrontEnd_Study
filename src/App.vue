@@ -27,7 +27,12 @@
     <router-link to="/parentComponent2">parentComponent2</router-link> |
     <router-link to="/parentComponent3">parentComponent3</router-link> |
     <router-link to="/parentComponent4">parentComponent4</router-link> |
-    <router-link to="/parentComponent5">parentComponent5</router-link> 
+    <router-link to="/parentComponent5">parentComponent5</router-link> |
+    <router-link to="/slot">Slot</router-link> |
+    <router-link to="/inject">Inject</router-link> |
+    <router-link to="/mixins">Mixins</router-link> |
+    <router-link to="/customDirective">customDirective</router-link> |
+    <router-link to="/plugin">Plugins</router-link> |
 
   </nav>
   <router-view/>

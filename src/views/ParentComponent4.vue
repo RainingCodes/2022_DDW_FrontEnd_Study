@@ -8,7 +8,7 @@
         components: {ChildComponent},
         methods: {
             sendMessage(data) {
-                console.log(data);
+            console.log(data);
             }
         }
     }

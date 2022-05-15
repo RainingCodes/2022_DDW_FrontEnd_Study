@@ -31,7 +31,7 @@
     },
     methods: {
       async getList() {
-        this.productList = await this.$api("https://74a0d318-46f6-415c-ad0c-7d5b27899606.mock.pstmn.io/list", "get");
+        this.productList = await this.$api("https://2500e231-e652-472e-b9fb-b1870a1db62f.mock.pstmn.io/list", "get");
         console.log(this.productList);
       }
     }
